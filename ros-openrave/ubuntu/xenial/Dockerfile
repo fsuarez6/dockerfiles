@@ -22,8 +22,6 @@ RUN apt-get install -y --no-install-recommends sudo unzip wget
 ENV QT_X11_NO_MITSHM 1
 RUN apt-get install -y mesa-utils libgl1-mesa-glx libgl1-mesa-dri
 RUN apt-get install -y ros-kinetic-rqt
-# libgl1-mesa-glx
-# libgl1-mesa-dri
 
 # RUN apt-get clean -qq && rm -rf /var/lib/apt/lists/*
 
