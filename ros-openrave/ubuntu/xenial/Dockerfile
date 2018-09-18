@@ -55,8 +55,3 @@ RUN cd /usr/src \
 LABEL com.nvidia.volumes.needed="nvidia_driver"
 ENV PATH /usr/local/nvidia/bin:${PATH}
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_PATH}
-
-# Switch to a normal user
-RUN useradd -ms /bin/bash fsuarez6
-USER fsuarez6
-WORKDIR /home/fsuarez6
