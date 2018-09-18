@@ -1,1 +1,1 @@
-docker build t ros-openrave .
+docker build -t ros-openrave .

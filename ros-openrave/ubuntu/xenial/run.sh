@@ -1,4 +1,7 @@
-docker run -it \
+# Add access control to the X server
+# xhost +local:root
+# Run the docker
+nvidia-docker run -it \
     --user=$USER \
     --env="DISPLAY" \
     --workdir="/home/$USER" \
@@ -10,26 +13,5 @@ docker run -it \
     --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
     ros-openrave:latest \
     /bin/bash
-
-# docker run -it \
-#     --env="DISPLAY" \
-#     --env="QT_X11_NO_MITSHM=1" \
-#     --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
-#     ros-openrave:latest \
-#     /bin/bash
-
-
-# XSOCK=/tmp/.X11-unix
-# $ XAUTH=/tmp/.docker.xauth
-#
-# $ touch $XAUTH
-# $ xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
-#
-# $ docker run -i -t --rm \
-# 	     -v $XSOCK:$XSOCK:rw \
-# 	     -v $XAUTH:$XAUTH:rw \
-# 	     -e XAUTHORITY=${XAUTH} \
-# 	     -e DISPLAY \
-# 	     --name ros \
-# 	     diegoferigo/ros \
-# 	     bash
+# Remove access control to the X server
+# xhost -local:root

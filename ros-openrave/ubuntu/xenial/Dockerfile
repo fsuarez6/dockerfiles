@@ -20,7 +20,8 @@ RUN apt-get install -y --no-install-recommends sudo unzip wget
 
 # Provide support for GUIs
 ENV QT_X11_NO_MITSHM 1
-RUN apt-get install -y rqt
+RUN apt-get install -y mesa-utils libgl1-mesa-glx libgl1-mesa-dri
+RUN apt-get install -y ros-kinetic-rqt
 # libgl1-mesa-glx
 # libgl1-mesa-dri
 
@@ -50,6 +51,10 @@ RUN cd /usr/src \
     && cmake -DODE_USE_MULTITHREAD=ON -DOSG_DIR=/usr/local/lib64/ .. \
     && make -j `nproc` && make install
 
+# Add nvidia support
+LABEL com.nvidia.volumes.needed="nvidia_driver"
+ENV PATH /usr/local/nvidia/bin:${PATH}
+ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64:${LD_LIBRARY_PATH}
 
 # Switch to a normal user
 RUN useradd -ms /bin/bash fsuarez6
