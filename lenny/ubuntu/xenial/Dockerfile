@@ -16,7 +16,8 @@ RUN apt-get install -y --no-install-recommends ros-kinetic-moveit-python python-
     ros-kinetic-cv-bridge ros-kinetic-gazebo-ros ros-kinetic-tf-conversions ros-kinetic-gazebo-ros-control          \
     ros-kinetic-xacro ros-kinetic-rqt-service-caller ros-kinetic-joint-state-publisher ros-kinetic-simple-message
 
-RUN apt-get install -y --no-install-recommends python-pymodbus
+# More required packages
+RUN apt-get install -y --no-install-recommends psmisc python-pymodbus ros-kinetic-gazebo-plugins ros-kinetic-joint-trajectory-action
 
 # Switch to a normal user
 RUN useradd -ms /bin/bash fsuarez6
