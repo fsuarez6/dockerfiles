@@ -24,7 +24,7 @@ RUN mkdir -p /usr/src && cd /usr/src \
     && unzip -q OpenSceneGraph.zip -d /usr/src \
     && cd /usr/src/OpenSceneGraph-OpenSceneGraph-3.4 && mkdir build && cd build \
     && cmake .. -DDESIRED_QT_VERSION=4 && make -j `nproc` && make install   \
-    rm -rf /usr/src/OpenSceneGraph-OpenSceneGraph-3.4/build
+    && rm -rf /usr/src/OpenSceneGraph-OpenSceneGraph-3.4/build
 
 # FCL
 RUN cd /usr/src \
@@ -32,10 +32,10 @@ RUN cd /usr/src \
     && unzip -q fcl.zip -d /usr/src \
     && cd /usr/src/fcl-0.5.0 && mkdir build && cd build \
     && cmake .. && make -j `nproc` && make install  \
-    rm -rf /usr/src/fcl-0.5.0/build
+    && rm -rf /usr/src/fcl-0.5.0/build
 
 # OpenRAVE
-RUN pip install --upgrade --user sympy==0.7.1
+RUN pip install --upgrade sympy==0.7.1
 
 RUN cd /usr/src \
     && wget https://github.com/rdiankov/openrave/archive/7c5f5e27eec2b2ef10aa63fbc519a998c276f908.zip -O openrave.zip \
@@ -43,4 +43,4 @@ RUN cd /usr/src \
     && cd /usr/src/openrave-7c5f5e27eec2b2ef10aa63fbc519a998c276f908 && mkdir build && cd build \
     && cmake -DODE_USE_MULTITHREAD=ON -DOSG_DIR=/usr/local/lib64/ .. \
     && make -j `nproc` && make install  \
-    rm -rf /usr/src/openrave-7c5f5e27eec2b2ef10aa63fbc519a998c276f908/build
+    && rm -rf /usr/src/openrave-7c5f5e27eec2b2ef10aa63fbc519a998c276f908/build
