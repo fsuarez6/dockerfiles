@@ -40,7 +40,7 @@ ENV RAVE_COMMIT 7c5f5e27eec2b2ef10aa63fbc519a998c276f908
 RUN pip install --upgrade sympy==0.7.1
 
 RUN cd /usr/src \
-    && wget https://github.com/rdiankov/openrave/archive/${RAVE_COMMIT}.zip -O openrave.zip \
+    && wget -q https://github.com/rdiankov/openrave/archive/${RAVE_COMMIT}.zip -O openrave.zip \
     && unzip -q openrave.zip -d /usr/src \
     && cd /usr/src/openrave-${RAVE_COMMIT} && mkdir build && cd build \
     && cmake -DODE_USE_MULTITHREAD=ON -DOSG_DIR=/usr/local/lib64/ .. \
