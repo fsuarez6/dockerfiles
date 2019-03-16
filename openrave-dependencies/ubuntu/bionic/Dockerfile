@@ -1,6 +1,8 @@
 FROM ubuntu:18.04
 MAINTAINER Francisco Suarez <fsuarez6@gmail.com>
 
+ENV DEBIAN_FRONTEND noninteractive
+
 # Install dependencies
 RUN rm -rf /var/lib/apt/lists/* && apt-get update  \
     && apt-get install -y --no-install-recommends apt-utils lsb-release sudo unzip wget
