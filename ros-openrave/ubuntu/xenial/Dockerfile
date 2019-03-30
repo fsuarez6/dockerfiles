@@ -1,22 +1,5 @@
-FROM ros:kinetic-ros-base-xenial
+FROM fsuarez6/openrave-dependencies-xenial:0.9.0
 MAINTAINER Francisco Suarez <fsuarez6@gmail.com>
-
-# Install dependencies
-RUN apt-get update  \
-    && apt-get install -y --no-install-recommends ann-tools build-essential cmake cmake doxygen g++ git ipython     \
-    libann-dev libassimp-dev libavcodec-dev libavformat-dev libboost-all-dev libboost-python-dev libccd-dev         \
-    libcollada-dom2.4-dp-dev libeigen3-dev libflann-dev libgl1-mesa-dri libgl1-mesa-glx liblapack-dev               \
-    liblog4cxx-dev libminizip-dev liboctave-dev libode-dev libpcre3-dev libqhull-dev libqt5opengl5-dev              \
-    libsoqt-dev-common libsoqt4-dev libswscale-dev libtinyxml-dev libxml2-dev libxrandr-dev mesa-utils minizip      \
-    octave python-dev python-h5py python-numpy python-pip python-scipy python-sympy qt5-default ros-kinetic-rqt     \
-    sudo unzip wget \
-    && apt-get clean -qq && rm -rf /var/lib/apt/lists/*
-
-# Provide support for GUIs
-ENV QT_X11_NO_MITSHM 1
-
-# Install everything as root
-USER root
 
 # OpenSceneGraph
 ENV OSG_COMMIT 1f89e6eb1087add6cd9c743ab07a5bce53b2f480
